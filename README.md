@@ -76,9 +76,9 @@ Here is the output from ipython:
 ```
 In [1]: import gpdf as gp
 
-In [2]: import numpy as nm
+In [2]: import numpy as np
 
-In [3]: za=nm.arange(-1,1,0.1)
+In [3]: za=np.arange(-1,1,0.1)
 
 In [4]: gp.Inm(za,0.0,0.01,1,0)
 Out[4]: 
