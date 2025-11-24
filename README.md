@@ -106,3 +106,8 @@ make install
 ```
 
 will install libgpdf.a, ligquadp.a, libamos.a in dest_path/lib and gpdf.h in dest_path/include
+
+see the following papers for details:
+
+[1] [https://doi.org/10.1016/j.jcp.2014.03.017]([https://doi.org/10.1016/j.jcp.2014.03.017])
+[2] [https://dx.doi.org/10.1088/1361-6587/aa9e27](https://dx.doi.org/10.1088/1361-6587/aa9e27)
