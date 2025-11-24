@@ -57,6 +57,8 @@ In other words, for example, you can enable the python wrapper interface using:
 ./configure --enable python
 make
 
+Note that you need to install meson if you enable the python interface (e.g. `sudo pacman -Sy meson` or `sudo apt install meson ninja-build`)
+
 How to Use:
 ==========
 If you want to use th Inm functions in your project, you can either include zpdgen by hand or install it system wide.
