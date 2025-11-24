@@ -31,6 +31,7 @@ ctest_DEPENDENCIES = ./libgpdf.a
 
 if ZPDGEN_PYTHON_ON
 bin_SCRIPTS=inmzpd.pyf epszpd.pyf
+PYLD=-L$(abs_srcdir) -L$(abs_srcdir)/quadp -lgpdf -lquadp -lgfortran
 endif
 CLEANFILES=$(bin_SCRIPTS) *.so
 
@@ -38,10 +39,10 @@ inmzpd.pyf: inmzpd.f Makefile.am
 	$(F2PY) --overwrite-signature -m inmzpd -h inmzpd.pyf only : inmweid gmweid : inmzpd.f
 	sed 's/:: res/,intent(out) :: res/' <inmzpd.pyf | sed 's/:: za/, intent(in) :: za/'| sed 's/:: b/, intent(in) :: b/'| sed 's/:: zb/, intent(in) :: zb/'| sed 's/:: n/, intent(in) :: n/'| sed 's/:: m/, intent(in) :: m/'| sed 's/:: z1/, intent(in) :: z1/'| sed 's/:: z2/, intent(in) :: z2/'>tmpout
 	mv tmpout inmzpd.pyf
-	$(F2PY) -c inmzpd.pyf $(ftest_LDADD)
+	$(F2PY) -c inmzpd.pyf $(PYLD)
 
 epszpd.pyf: epszpd.f Makefile.am
 	$(F2PY) --overwrite-signature -m epszpd -h epszpd.pyf only : epsweid sigweid : epszpd.f
 	sed 's/:: res/,intent(out) :: res/' <epszpd.pyf | sed 's/:: om/, intent(in) :: om/'| sed 's/:: pars/, intent(in) :: pars/'| sed 's/:: za/, intent(in) :: za/'| sed 's/:: b/, intent(in) :: b/'| sed 's/:: zb/, intent(in) :: zb/'>tmpout
 	mv tmpout epszpd.pyf
-	$(F2PY) -c epszpd.pyf $(ftest_LDADD)
+	$(F2PY) -c epszpd.pyf $(PYLD)

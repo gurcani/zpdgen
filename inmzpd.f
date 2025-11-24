@@ -36,7 +36,8 @@ c      PARAMETER (nlimit=10000,limsingsm=1.0e-8,npts2=3,
 c     *     epsrel=1.0e-2,epsabs=1.0e-6)
       PARAMETER (limsingsm=1.0e-12,npts2=3,limsinglg=1.0e-6,
      *     epsrel=1.0e-4,epsabs=1.0e-8)
-      double precision fpd_re,fpd_im,spoints(3)
+      double precision spoints(3)
+      double precision fpd_re,fpd_im,resfpd_im,resfpd_re
       EXTERNAL fpd_re,fpd_im,resfpd_im,resfpd_re
       external dqagi,dqagp,dqag,prerr
       common /inmcom/ mf,nf,zbb,bbi,zaa,w

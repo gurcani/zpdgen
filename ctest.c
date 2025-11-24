@@ -1,6 +1,7 @@
 #include <complex.h>
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 #include "gpdf.h"
 int main(int argc, char *argv[]){
   unsigned long int t,tc;

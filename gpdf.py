@@ -1,6 +1,7 @@
-from numpy import reshape,shape,rank,transpose
+from numpy import reshape,shape,transpose
 from inmzpd import inmweid,gmweid
 from epszpd import epsweid,sigweid
+rank = lambda x : len(shape(x))
 
 def Inm(za,zb,b,n,m):
     res=inmweid(za,zb,b,n,m)

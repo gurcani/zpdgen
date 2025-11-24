@@ -29,7 +29,8 @@ C
      *     nlimit=10000,epsrel=1.0e-4,epsabs=1.0e-8,
      *     sqrttwo =1.414213562373095,npts2=3,
      *     limsingsm=1.0e-12,limsinglg=1.0e-5)
-      double precision fpd_re,fpd_im,spoints(3)
+      double precision spoints(3)
+      double precision fepspd_re,fepspd_im,resfepspd_im,resfepspd_re
       EXTERNAL DQAG, fepspd_re,fepspd_im,resfepspd_im,resfepspd_re
       common /epscom/ omdi,omsi,etai,tau,ky,kpar,zbb,bbi,zaa,w,om
       FLAG = .FALSE.
@@ -212,13 +213,13 @@ Cf2py double complex dimension(numza) :: res
          xi=dble(za(l))
          yi=dimag(za(l))
          if (dabs(xi).gt.largestxi.or.dabs(yi).gt.largestyi) goto 140
-         call sigmazpd(xi,yi,zb,b,anm,numn,numm,u,v,flag)
+         call sigmazpd(xi,yi,zb(l),b,anm,numn,numm,u,v,flag)
          if(flag) goto 130
          res(l)=u+i*v;
  30   continue
       return
- 130  call prerr(za,zb,b)
-      write (*,*), "za:",za
+ 130  call prerr(za(l),zb(l),b)
+      write (*,*) "za:",za
       return
  140  write(*,*) "za value out of bounds (+-1e4)! returning:", largeval
       res(l)=largeval
@@ -236,7 +237,7 @@ Cf2py double complex dimension(numza) :: res
       integer nlimit,mf,nf,last,npts2,k,numnml
       PARAMETER (limsingsm=1.0e-12,npts2=3,limtn=1.0e-20,
      *     epsrel=1.0e-4,epsabs=1.0e-8)
-      double precision fpdsig_re,fpdsig_im,resfpdsig_im,resfpdsig_re
+      double precision fsigpd_re,fsigpd_im,resfsigpd_im,resfsigpd_re
       EXTERNAL fsigpd_re,fsigpd_im,resfsigpd_im,resfsigpd_re
       external dqagi,dqagp,dqag,prerr
       common /sigcom/ anml,zbb,bbi,zaa,w,nml,numnml
