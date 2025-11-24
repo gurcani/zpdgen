@@ -44,6 +44,8 @@ you can compile the main library and the test binaries as follows:
 make
 ```
 
+You probably need gfortran. (i.e. `sudo pacman -Sy gcc-fortran`, or `sudo apt install gfortran`
+
 configure script has some special flags in particular
 
 ```
