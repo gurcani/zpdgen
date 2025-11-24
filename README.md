@@ -56,8 +56,10 @@ configure script has some special flags in particular
 
 In other words, for example, you can enable the python wrapper interface using:
 
-./configure --enable python
+```
+./configure --enable-python
 make
+```
 
 Note that you need to install meson if you enable the python interface (e.g. `sudo pacman -Sy meson` or `sudo apt install meson ninja-build`)
 
