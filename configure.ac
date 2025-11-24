@@ -1,10 +1,8 @@
 #                                               -*- Autoconf -*-
 # Process this file with autoconf to produce a configure script.
 
-AC_PREREQ(2.61)
-
-AC_INIT([ieps_gpdf], [0.1], [ogurcan@lpp.polytechnique.fr])
-
+AC_PREREQ([2.72])
+AC_INIT([ieps_gpdf],[0.1],[ogurcan@lpp.polytechnique.fr])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
 
 # Checks for programs.
@@ -18,7 +16,7 @@ AC_CONFIG_MACRO_DIR([m4])
 CFLAG=""
 FFLAGS=""
 
-AC_ARG_ENABLE(debug, AC_HELP_STRING([--enable-debug],[enables debugging]), ok=$enableval, ok=no)
+AC_ARG_ENABLE(debug, AS_HELP_STRING([--enable-debug],[enables debugging]), ok=$enableval, ok=no)
 if test "$ok" = "yes"; then
 	AC_DEFINE(ZPDGEN_DEBUG,1,[define to enable debugging code.])
 	CFLAGS="$CFLAGS -g -O0"
@@ -28,14 +26,14 @@ else
 	FFLAGS="$FFLAGS -Ofast -funroll-loops"
 fi
 
-AC_ARG_ENABLE(profile, AC_HELP_STRING([--enable-profile],[enables profiling]), ok=$enableval, ok=no)
+AC_ARG_ENABLE(profile, AS_HELP_STRING([--enable-profile],[enables profiling]), ok=$enableval, ok=no)
 if test "$ok" = "yes"; then
 	AC_DEFINE(ZPDGEN_PROF,1,[define to enable profiling.])
 	CFLAGS="$CFLAGS -pg"
 	FFLAGS="$FFLAGS -pg"
 fi
 
-AC_ARG_ENABLE(python, AC_HELP_STRING([--enable-python],[enables python wrappers]), ok=$enableval, ok=no)
+AC_ARG_ENABLE(python, AS_HELP_STRING([--enable-python],[enables python wrappers]), ok=$enableval, ok=no)
 if test "$ok" = "yes"; then
 	AC_DEFINE(ZPDGEN_PYTHON,1,[define to enable python wrappers.])
 	AM_CONDITIONAL(ZPDGEN_PYTHON_ON,true)
@@ -83,16 +81,21 @@ AC_CHECK_LIB([gfortran],[main],[],[echo "Error! You need gfortran runtime librar
 #  AX_MPI
 #  CC="$MPICC"
 #  LIBS="$MPILIBS $LIBS"
-
 # Checks for header files.
-AC_HEADER_STDC
+m4_warn([obsolete],
+[The preprocessor macro 'STDC_HEADERS' is obsolete.
+  Except in unusual embedded environments, you can safely include all
+  C89 headers unconditionally.])dnl
+# Autoupdate added the next two lines to ensure that your configure
+# script's behavior did not change.  They are probably safe to remove.
+AC_CHECK_INCLUDES_DEFAULT
+AC_PROG_EGREP
+
 AC_CHECK_HEADERS([stdlib.h])
 #AC_CHECK_HEADERS([omp.h],[CFLAGS+=" -fopenmp"],[])
-
 # Checks for typedefs, structures, and compiler characteristics.
-
 # Checks for library functions.
 AC_FUNC_MALLOC
-
 #AC_CONFIG_FILES([Makefile])
-AC_OUTPUT(Makefile quadp/Makefile)
+AC_CONFIG_FILES([Makefile quadp/Makefile])
+AC_OUTPUT

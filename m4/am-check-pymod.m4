@@ -17,6 +17,8 @@ except:
 sys.exit(0)"], [prog="
 import $1
 $1.$2"])
+
+
 if $PYTHON -c "$prog" 1>&AC_FD_CC 2>&AC_FD_CC
   then
     eval "py_cv_mod_$py_mod_var=yes"
@@ -24,6 +26,7 @@ if $PYTHON -c "$prog" 1>&AC_FD_CC 2>&AC_FD_CC
     eval "py_cv_mod_$py_mod_var=no"
   fi
 ])
+
 py_val=`eval "echo \`echo '$py_cv_mod_'$py_mod_var\`"`
 if test "x$py_val" != xno; then
   AC_MSG_RESULT(yes)

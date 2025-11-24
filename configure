@@ -2526,7 +2526,6 @@ ac_link='$CC -o conftest$ac_exeext $CFLAGS $CPPFLAGS $LDFLAGS conftest.$ac_ext $
 ac_compiler_gnu=$ac_cv_c_compiler_gnu
 
 
-
 am__api_version='1.18'
 
 
@@ -5694,6 +5693,8 @@ else case e in #(
 prog="
 import numpy
 numpy.ndarray"
+
+
 if $PYTHON -c "$prog" 1>&5 2>&5
   then
     eval "py_cv_mod_$py_mod_var=yes"
@@ -5703,6 +5704,7 @@ if $PYTHON -c "$prog" 1>&5 2>&5
  ;;
 esac
 fi
+
 
 py_val=`eval "echo \`echo '$py_cv_mod_'$py_mod_var\`"`
 if test "x$py_val" != xno; then
@@ -5939,8 +5941,9 @@ fi
 #  AX_MPI
 #  CC="$MPICC"
 #  LIBS="$MPILIBS $LIBS"
-
 # Checks for header files.
+# Autoupdate added the next two lines to ensure that your configure
+# script's behavior did not change.  They are probably safe to remove.
 ac_header= ac_cache=
 for ac_item in $ac_header_c_list
 do
@@ -6041,9 +6044,6 @@ printf "%s\n" "$ac_cv_path_GREP" >&6; }
  GREP="$ac_cv_path_GREP"
 
 
-# Autoupdate added the next two lines to ensure that your configure
-# script's behavior did not change.  They are probably safe to remove.
-
 { printf "%s\n" "$as_me:${as_lineno-$LINENO}: checking for egrep" >&5
 printf %s "checking for egrep... " >&6; }
 if test ${ac_cv_path_EGREP+y}
@@ -6130,9 +6130,7 @@ then :
 fi
 
 #AC_CHECK_HEADERS([omp.h],[CFLAGS+=" -fopenmp"],[])
-
 # Checks for typedefs, structures, and compiler characteristics.
-
 # Checks for library functions.
 
 
@@ -6278,7 +6276,6 @@ printf "%s\n" "#define malloc rpl_malloc" >>confdefs.h
  ;;
 esac
 fi
-
 
 
 #AC_CONFIG_FILES([Makefile])
