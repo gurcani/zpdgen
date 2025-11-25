@@ -117,12 +117,11 @@ c     *     epsrel=1.0e-2,epsabs=1.0e-6)
       end function Fpd_im
 
       double complex function Fpd(s)
-      double precision s,limsingsm,xbr,Jr0,zbb,bbi
+      double precision s,xbr,Jr0,zbb,bbi
       integer mf,nf,ierr,nz
       double complex z1,z2,zaa,Gm,weidGm,w,zr
       common /inmcom/ mf,nf,zbb,bbi,zaa,w
       external weidGm
-      parameter (limsingsm = 1.0e-12)
       zr=cdsqrt(4.0*w-2.0*s)
       z1=0.5*(zbb+zr)
       z2=0.5*(zbb-zr)
