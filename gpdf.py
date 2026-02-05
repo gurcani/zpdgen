@@ -25,7 +25,7 @@ def sigmazpd(za,zb,b,anm):
     if (rank(anm)==2):
         numn,numm=shape(anm)
     elif (rank(anm)==1):
-        numn=size(anm)
+        numn=len(anm)
         numm=0
     elif (rank(anm)==0):
         numn=0
